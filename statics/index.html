@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html manifest="modules.appcache">
+
+<head> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.js"></script>
+  <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="prefetch" href="module.js">
+</head>
+
+<body>
+  <div ng-app="myApp">
+    <div ng-controller="example">
+      <div>Current time is {{date.toTimeString()}}</div>
+    </div>
+
+    <div ng-controller="example2">
+      <div ng-repeat="name in names">
+        {{name}}
+      </div>
+      <button ng-click="clicked()">Click me! (Pre-fetched)</button>
+      <div ng-if="delayed">
+        <div oc-lazy-load="['MyModule']" on-error="lazyLoadError()">
+          <my-example></my-example>
+        </div>
+      </div>
+
+      <button ng-click="clicked2()">Click me 2! (app cached)</button>
+    </div>
+    <a href='public/modules.appcache'>click for cache manifest</a>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

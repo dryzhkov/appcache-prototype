@@ -1,0 +1,7 @@
+body {
+  padding: 20px 0px;
+}
+[ng-model]:hover {
+  outline: dotted 5px rgba(255,0,0,.5);
+  outline-offset: 5px;
+}
